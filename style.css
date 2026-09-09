@@ -1,1 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    color: #493b52;
+    background: #fff9fc;
+    overflow-x: hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 249, 252, 0.85);
+    backdrop-filter: blur(12px);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(214, 181, 205, 0.25);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #7c587b;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #67566d;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #d884ae;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 88vh;
+    padding: 70px 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+
+    background:
+        radial-gradient(circle at 15% 20%, #f7dff0 0%, transparent 28%),
+        radial-gradient(circle at 85% 30%, #ddd9f8 0%, transparent 30%),
+        linear-gradient(135deg, #fff9fc, #f8f4ff);
+}
+
+.hero-content {
+    max-width: 560px;
+    animation: fadeUp 1s ease forwards;
+}
+
+.small-title {
+    color: #c27da4;
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(58px, 8vw, 105px);
+    line-height: 0.95;
+    color: #58445f;
+}
+
+.hero h1 span {
+    color: #c987ad;
+    font-style: italic;
+}
+
+.hero-text {
+    max-width: 430px;
+    margin: 28px 0;
+    color: #786b7c;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.explore-btn {
+    display: inline-block;
+    padding: 14px 25px;
+
+    border-radius: 50px;
+    background: #9b7098;
+    color: white;
+
+    text-decoration: none;
+    font-size: 14px;
+
+    box-shadow: 0 12px 25px rgba(155, 112, 152, 0.25);
+    transition: 0.35s ease;
+}
+
+.explore-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px rgba(155, 112, 152, 0.35);
+}
+
+/* =========================
+   HERO ART PLACEHOLDER
+========================= */
+
+.hero-art {
+    width: 390px;
+    height: 480px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art-placeholder {
+    width: 330px;
+    height: 410px;
+
+    border-radius: 180px 180px 30px 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 90px;
+
+    background:
+        linear-gradient(145deg, #f4dce9, #dcd9f5);
+
+    box-shadow:
+        0 30px 70px rgba(108, 82, 119, 0.18);
+
+    animation: float 4s ease-in-out infinite;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-section {
+    padding: 110px 8%;
+    background: #fffdfd;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading p {
+    color: #d08aaf;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: #58445f;
+    margin-bottom: 12px;
+}
+
+.section-heading span {
+    color: #887a8d;
+    font-size: 14px;
+}
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
+
+.categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.category {
+    border: 1px solid #ead9e5;
+    background: white;
+
+    color: #77647b;
+
+    padding: 10px 18px;
+    border-radius: 30px;
+
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: 0.3s ease;
+}
+
+.category:hover,
+.category.active {
+    background: #9b7098;
+    color: white;
+    border-color: #9b7098;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   ART GRID
+========================= */
+
+.art-grid {
+    max-width: 1150px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.art-card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+
+    border: 1px solid #f0e5ed;
+
+    box-shadow: 0 12px 35px rgba(89, 66, 94, 0.06);
+
+    transition: 0.4s ease;
+}
+
+.art-card:hover {
+    transform: translateY(-9px);
+    box-shadow: 0 22px 45px rgba(89, 66, 94, 0.13);
+}
+
+.art-image {
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 70px;
+
+    background:
+        linear-gradient(145deg, #f7e4ee, #e8e5fa);
+
+    transition: 0.5s ease;
+}
+
+.art-card:hover .art-image {
+    transform: scale(1.03);
+}
+
+.art-info {
+    padding: 18px;
+}
+
+.art-info h3 {
+    font-family: 'Playfair Display', serif;
+    color: #59485f;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+
+.art-info p {
+    color: #938695;
+    font-size: 12px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    padding: 110px 8%;
+    text-align: center;
+
+    background:
+        radial-gradient(circle at 20% 30%, #eee4fa, transparent 30%),
+        radial-gradient(circle at 80% 70%, #f8dfed, transparent 30%),
+        #faf6fc;
+}
+
+.about p {
+    color: #c27da4;
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: #58445f;
+    margin-bottom: 18px;
+}
+
+.about span {
+    display: block;
+    max-width: 600px;
+    margin: auto;
+    color: #807284;
+    line-height: 1.8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    color: #9a8a9d;
+    background: #fff9fc;
+}
+
+/* =========================
+   FLOATING SPARKLES
+========================= */
+
+.sparkle {
+    position: fixed;
+    color: #d89abd;
+    pointer-events: none;
+    z-index: 5;
+    animation: sparkleMove 4s ease-in-out infinite;
+}
+
+.sparkle-one {
+    top: 25%;
+    left: 4%;
+    font-size: 22px;
+}
+
+.sparkle-two {
+    top: 65%;
+    right: 5%;
+    font-size: 18px;
+    animation-delay: 1s;
+}
+
+.sparkle-three {
+    top: 40%;
+    right: 3%;
+    font-size: 14px;
+    animation-delay: 2s;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+@keyframes sparkleMove {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(20deg);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 60px;
+    }
+
+    .hero-text {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-art {
+        width: 100%;
+        height: 390px;
+    }
+
+    .art-placeholder {
+        width: 270px;
+        height: 330px;
+    }
+
+    .art-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    nav {
+        gap: 14px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 70px 6%;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .gallery-section,
+    .about {
+        padding: 80px 6%;
+    }
+
+    .section-heading h2,
+    .about h2 {
+        font-size: 36px;
+    }
+
+    .art-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .art-image {
+        height: 360px;
+    }
+}
