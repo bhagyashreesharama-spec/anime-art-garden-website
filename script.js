@@ -1,389 +1,503 @@
-/* =========================================================
-   ANIME ART GARDEN
-   Complete JavaScript
-========================================================= */
+// ================================
+// ANIME ART GARDEN - JAVASCRIPT
+// ================================
 
+// Current selected category
+let currentCategory = "All";
 
-/* =========================================================
-   ELEMENTS
-========================================================= */
+// -------------------------------
+// CATEGORY FILTER
+// -------------------------------
 
 const categoryButtons = document.querySelectorAll(".category");
 const artCards = document.querySelectorAll(".art-card");
 
-const searchInput = document.getElementById("searchInput");
-const clearSearch = document.getElementById("clearSearch");
+categoryButtons.forEach((button) => {
 
-const randomArtBtn = document.getElementById("randomArtBtn");
-const randomHeroBtn = document.getElementById("randomHeroBtn");
+    button.addEventListener("click", () => {
 
-const noResults = document.getElementById("noResults");
-const resetGallery = document.getElementById("resetGallery");
+        // Remove active from all buttons
+        categoryButtons.forEach((btn) => {
+            btn.classList.remove("active");
+        });
 
-const artModal = document.getElementById("artModal");
-const modalOverlay = document.getElementById("modalOverlay");
-const modalClose = document.getElementById("modalClose");
+        // Add active to clicked button
+        button.classList.add("active");
 
-const modalArt = document.getElementById("modalArt");
-const modalTag = document.getElementById("modalTag");
-const modalTitle = document.getElementById("modalTitle");
-const modalDescription = document.getElementById("modalDescription");
-const modalLike = document.getElementById("modalLike");
+        const selectedCategory = button.textContent.trim();
+        currentCategory = selectedCategory;
 
+        filterArtworks(selectedCategory);
+    });
 
-/* =========================================================
-   CURRENT FILTER
-========================================================= */
-
-let currentFilter = "All";
-let currentModalCard = null;
+});
 
 
-/* =========================================================
-   CATEGORY FILTER
-========================================================= */
+// -------------------------------
+// FILTER FUNCTION
+// -------------------------------
 
-function filterGallery() {
-
-    const searchText = searchInput.value
-        .trim()
-        .toLowerCase();
+function filterArtworks(category) {
 
     let visibleCards = 0;
 
-    artCards.forEach(card => {
+    artCards.forEach((card) => {
 
-        const categories = card.dataset.category
-            .toLowerCase()
-            .split(" ");
+        const text = card.textContent.toLowerCase();
 
-        const title = card.dataset.title
-            .toLowerCase();
+        // All button
+        if (category === "All") {
 
-        const description = card.dataset.description
-            .toLowerCase();
+            card.style.display = "";
 
-        const matchesCategory =
-            currentFilter === "All" ||
-            categories.includes(currentFilter.toLowerCase());
+            visibleCards++;
+            return;
+        }
 
-        const matchesSearch =
-            searchText === "" ||
-            title.includes(searchText) ||
-            description.includes(searchText) ||
-            categories.some(category =>
-                category.includes(searchText)
-            );
+        // Check category name inside card
+        if (text.includes(category.toLowerCase())) {
 
-        if (matchesCategory && matchesSearch) {
-
-            card.classList.remove("hidden");
-
+            card.style.display = "";
             visibleCards++;
 
         } else {
 
-            card.classList.add("hidden");
-
+            card.style.display = "none";
         }
 
     });
 
-
-    /* No result message */
-
-    if (visibleCards === 0) {
-
-        noResults.classList.add("show");
-
-    } else {
-
-        noResults.classList.remove("show");
-
-    }
-
-
-    /* Clear button */
-
-    if (searchText !== "") {
-
-        clearSearch.style.display = "block";
-
-    } else {
-
-        clearSearch.style.display = "none";
-
-    }
-
+    showNoResults(visibleCards);
 }
 
 
-/* =========================================================
-   CATEGORY BUTTON CLICK
-========================================================= */
+// -------------------------------
+// NO RESULTS MESSAGE
+// -------------------------------
 
-categoryButtons.forEach(button => {
+function showNoResults(count) {
 
-    button.addEventListener("click", () => {
+    let message = document.getElementById("noResults");
 
-        categoryButtons.forEach(btn => {
-            btn.classList.remove("active");
-        });
+    // Create message automatically if it doesn't exist
+    if (!message) {
 
-        button.classList.add("active");
+        message = document.createElement("div");
 
-        currentFilter = button.dataset.filter;
+        message.id = "noResults";
 
-        filterGallery();
+        message.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:50px 20px;
+                color:#8b778f;
+            ">
+                <div style="font-size:45px;">🌸</div>
+                <h3 style="
+                    margin:10px 0;
+                    font-family:serif;
+                ">
+                    No little artwork found
+                </h3>
+                <p>
+                    Try another category ✨
+                </p>
+            </div>
+        `;
 
-    });
+        const grid = document.querySelector(".art-grid");
 
-});
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-searchInput.addEventListener("input", () => {
-
-    filterGallery();
-
-});
-
-
-/* =========================================================
-   CLEAR SEARCH
-========================================================= */
-
-clearSearch.addEventListener("click", () => {
-
-    searchInput.value = "";
-
-    filterGallery();
-
-    searchInput.focus();
-
-});
-
-
-/* =========================================================
-   RESET GALLERY
-========================================================= */
-
-function resetGalleryView() {
-
-    currentFilter = "All";
-
-    categoryButtons.forEach(button => {
-
-        button.classList.remove("active");
-
-        if (button.dataset.filter === "All") {
-            button.classList.add("active");
+        if (grid) {
+            grid.parentNode.insertBefore(message, grid.nextSibling);
         }
+    }
 
-    });
-
-    searchInput.value = "";
-
-    filterGallery();
-
+    message.style.display = count === 0 ? "block" : "none";
 }
 
 
-resetGallery.addEventListener("click", resetGalleryView);
+// -------------------------------
+// ARTWORK CLICK
+// -------------------------------
+
+artCards.forEach((card) => {
+
+    card.style.cursor = "pointer";
+
+    card.addEventListener("click", () => {
+
+        const titleElement = card.querySelector("h3");
+        const descriptionElement = card.querySelector("p");
+        const imageElement = card.querySelector(".art-image");
+
+        const title = titleElement
+            ? titleElement.textContent
+            : "Anime Artwork";
+
+        const description = descriptionElement
+            ? descriptionElement.textContent
+            : "A little piece of imagination.";
+
+        const artwork = imageElement
+            ? imageElement.innerHTML
+            : "🌸";
+
+        openArtwork(title, description, artwork);
+
+    });
+
+});
 
 
-/* =========================================================
-   OPEN ART MODAL
-========================================================= */
+// -------------------------------
+// ARTWORK MODAL
+// -------------------------------
 
-function openArtModal(card) {
+function openArtwork(title, description, artwork) {
 
-    currentModalCard = card;
+    let modal = document.getElementById("artModal");
 
+    // Create modal automatically
+    if (!modal) {
 
-    /* Copy artwork scene */
+        modal = document.createElement("div");
 
-    const scene = card.querySelector(".art-scene");
+        modal.id = "artModal";
 
-    modalArt.innerHTML = "";
+        modal.innerHTML = `
+            <div id="modalOverlay"></div>
 
-    if (scene) {
+            <div class="art-modal-box">
 
-        const clonedScene = scene.cloneNode(true);
+                <button id="modalClose" aria-label="Close">
+                    ×
+                </button>
 
-        clonedScene.classList.add("modal-scene");
+                <div class="modal-artwork" id="modalArt"></div>
 
-        modalArt.appendChild(clonedScene);
+                <div class="modal-content">
 
+                    <span class="modal-tag">
+                        ✦ ANIME ART ✦
+                    </span>
+
+                    <h2 id="modalTitle"></h2>
+
+                    <p id="modalDescription"></p>
+
+                    <button id="modalLike" class="modal-like">
+                        ♡ Like
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        addModalEvents();
     }
 
+    document.getElementById("modalArt").innerHTML = artwork;
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalDescription").textContent = description;
 
-    /* Artwork information */
-
-    const title = card.dataset.title || "Artwork";
-
-    const description =
-        card.dataset.description ||
-        "A little piece of imagination.";
-
-
-    const tag =
-        card.querySelector(".art-tag")?.textContent ||
-        "ARTWORK";
-
-
-    modalTitle.textContent = title;
-
-    modalDescription.textContent = description;
-
-    modalTag.textContent = tag;
-
-
-    /* Match like state */
-
-    const likeButton =
-        card.querySelector(".like-button");
-
-    if (likeButton?.classList.contains("liked")) {
-
-        modalLike.classList.add("liked");
-
-        modalLike.textContent =
-            "♥ Liked artwork";
-
-    } else {
-
-        modalLike.classList.remove("liked");
-
-        modalLike.textContent =
-            "♡ Like this artwork";
-
-    }
-
-
-    artModal.classList.add("show");
+    modal.classList.add("show");
 
     document.body.style.overflow = "hidden";
-
 }
 
 
-/* =========================================================
-   CLOSE ART MODAL
-========================================================= */
+// -------------------------------
+// MODAL EVENTS
+// -------------------------------
 
-function closeArtModal() {
+function addModalEvents() {
 
-    artModal.classList.remove("show");
+    const modal = document.getElementById("artModal");
+    const closeButton = document.getElementById("modalClose");
+    const overlay = document.getElementById("modalOverlay");
+    const likeButton = document.getElementById("modalLike");
 
-    document.body.style.overflow = "";
+    closeButton.addEventListener("click", closeModal);
 
-    currentModalCard = null;
+    overlay.addEventListener("click", closeModal);
 
-}
+    likeButton.addEventListener("click", () => {
 
+        if (likeButton.classList.contains("liked")) {
 
-modalClose.addEventListener(
-    "click",
-    closeArtModal
-);
-
-
-modalOverlay.addEventListener(
-    "click",
-    closeArtModal
-);
-
-
-/* =========================================================
-   ESC KEY TO CLOSE MODAL
-========================================================= */
-
-document.addEventListener("keydown", event => {
-
-    if (
-        event.key === "Escape" &&
-        artModal.classList.contains("show")
-    ) {
-
-        closeArtModal();
-
-    }
-
-});
-
-
-/* =========================================================
-   ART CARD CLICK
-========================================================= */
-
-artCards.forEach(card => {
-
-    card.addEventListener("click", event => {
-
-        /*
-           Agar user heart button par click kare,
-           modal open nahi hoga.
-        */
-
-        if (
-            event.target.closest(".like-button")
-        ) {
-
-            return;
-
-        }
-
-        openArtModal(card);
-
-    });
-
-});
-
-
-/* =========================================================
-   LIKE BUTTONS
-========================================================= */
-
-const likeButtons =
-    document.querySelectorAll(".like-button");
-
-
-likeButtons.forEach(button => {
-
-    button.addEventListener("click", event => {
-
-        event.stopPropagation();
-
-        button.classList.toggle("liked");
-
-
-        if (button.classList.contains("liked")) {
-
-            button.textContent = "♥";
+            likeButton.classList.remove("liked");
+            likeButton.innerHTML = "♡ Like";
 
         } else {
 
-            button.textContent = "♡";
+            likeButton.classList.add("liked");
+            likeButton.innerHTML = "♥ Liked";
 
         }
 
+    });
 
-        /*
-           Agar modal currently isi artwork ka hai,
-           modal ka button bhi update karo.
-        */
-
-        const card =
-            button.closest(".art-card");
+}
 
 
-        if (currentModalCard === card) {
+// -------------------------------
+// CLOSE MODAL
+// -------------------------------
 
-            updateModalLike(button);
+function closeModal() {
+
+    const modal = document.getElementById("artModal");
+
+    if (modal) {
+        modal.classList.remove("show");
+    }
+
+    document.body.style.overflow = "";
+}
+
+
+// ESC KEY CLOSE
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Escape") {
+        closeModal();
+    }
+
+});
+
+
+// -------------------------------
+// SEARCH
+// -------------------------------
+
+function createSearch() {
+
+    // If search already exists, don't create another
+    if (document.getElementById("searchInput")) {
+        return;
+    }
+
+    const gallery = document.querySelector(".gallery-section");
+
+    if (!gallery) return;
+
+    const categories = document.querySelector(".categories");
+
+    const searchBox = document.createElement("div");
+
+    searchBox.className = "search-box";
+
+    searchBox.innerHTML = `
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search artwork..."
+            autocomplete="off"
+        >
+
+        <button id="clearSearch" type="button">
+            ×
+        </button>
+    `;
+
+    if (categories) {
+        categories.parentNode.insertBefore(searchBox, categories);
+    } else {
+        gallery.prepend(searchBox);
+    }
+
+    const input = document.getElementById("searchInput");
+    const clearButton = document.getElementById("clearSearch");
+
+    // Typing search
+    input.addEventListener("input", performSearch);
+
+    // ENTER search
+    input.addEventListener("keydown", (event) => {
+
+        if (event.key === "Enter") {
+
+            event.preventDefault();
+
+            performSearch();
+
+            // Small visual feedback
+            input.blur();
+        }
+
+    });
+
+    // Clear
+    clearButton.addEventListener("click", () => {
+
+        input.value = "";
+
+        filterArtworks(currentCategory);
+
+        input.focus();
+
+    });
+
+}
+
+
+// -------------------------------
+// SEARCH FUNCTION
+// -------------------------------
+
+function performSearch() {
+
+    const input = document.getElementById("searchInput");
+
+    if (!input) return;
+
+    const searchText = input.value.trim().toLowerCase();
+
+    let visibleCards = 0;
+
+    artCards.forEach((card) => {
+
+        const cardText = card.textContent.toLowerCase();
+
+        const matchesSearch =
+            searchText === "" ||
+            cardText.includes(searchText);
+
+        const matchesCategory =
+            currentCategory === "All" ||
+            cardText.includes(currentCategory.toLowerCase());
+
+        if (matchesSearch && matchesCategory) {
+
+            card.style.display = "";
+            visibleCards++;
+
+        } else {
+
+            card.style.display = "none";
+        }
+
+    });
+
+    showNoResults(visibleCards);
+}
+
+
+// -------------------------------
+// RANDOM ART
+// -------------------------------
+
+function createRandomButton() {
+
+    if (document.getElementById("randomArtBtn")) {
+        return;
+    }
+
+    const gallery = document.querySelector(".gallery-section");
+
+    if (!gallery) return;
+
+    const button = document.createElement("button");
+
+    button.id = "randomArtBtn";
+
+    button.className = "random-art-btn";
+
+    button.innerHTML = "🎲 Surprise Me";
+
+    const heading = gallery.querySelector(".section-heading");
+
+    if (heading) {
+        heading.appendChild(button);
+    }
+
+    button.addEventListener("click", randomArtwork);
+
+}
+
+
+// -------------------------------
+// RANDOM ART FUNCTION
+// -------------------------------
+
+function randomArtwork() {
+
+    const visibleCards = Array.from(artCards).filter((card) => {
+
+        return card.style.display !== "none";
+
+    });
+
+    if (visibleCards.length === 0) {
+        return;
+    }
+
+    const randomIndex =
+        Math.floor(Math.random() * visibleCards.length);
+
+    const card = visibleCards[randomIndex];
+
+    card.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+    setTimeout(() => {
+
+        card.style.transform = "translateY(-12px) scale(1.03)";
+
+        setTimeout(() => {
+
+            card.style.transform = "";
+
+            card.click();
+
+        }, 500);
+
+    }, 700);
+
+}
+
+
+// -------------------------------
+// ADD BUTTONS
+// -------------------------------
+
+createSearch();
+createRandomButton();
+
+
+// -------------------------------
+// INITIAL FILTER
+// -------------------------------
+
+filterArtworks("All");
+
+
+// -------------------------------
+// SMOOTH NAVIGATION
+// -------------------------------
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+        const targetId =
+            link.getAttribute("href");
+
+        const target =
+            document.querySelector(targetId);
+
+        if (target) {
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
 
         }
 
@@ -392,168 +506,10 @@ likeButtons.forEach(button => {
 });
 
 
-/* =========================================================
-   UPDATE MODAL LIKE
-========================================================= */
-
-function updateModalLike(button) {
-
-    if (button.classList.contains("liked")) {
-
-        modalLike.classList.add("liked");
-
-        modalLike.textContent =
-            "♥ Liked artwork";
-
-    } else {
-
-        modalLike.classList.remove("liked");
-
-        modalLike.textContent =
-            "♡ Like this artwork";
-
-    }
-
-}
-
-
-/* =========================================================
-   MODAL LIKE BUTTON
-========================================================= */
-
-modalLike.addEventListener("click", () => {
-
-    if (!currentModalCard) {
-        return;
-    }
-
-
-    const cardLikeButton =
-        currentModalCard.querySelector(".like-button");
-
-
-    if (!cardLikeButton) {
-        return;
-    }
-
-
-    cardLikeButton.classList.toggle("liked");
-
-
-    if (
-        cardLikeButton.classList.contains("liked")
-    ) {
-
-        cardLikeButton.textContent = "♥";
-
-    } else {
-
-        cardLikeButton.textContent = "♡";
-
-    }
-
-
-    updateModalLike(cardLikeButton);
-
-});
-
-
-/* =========================================================
-   RANDOM ART
-========================================================= */
-
-function openRandomArt() {
-
-    const visibleCards =
-        Array.from(artCards).filter(card => {
-
-            return !card.classList.contains("hidden");
-
-        });
-
-
-    /*
-       Agar current filter mein artwork nahi hai,
-       kuch random choose nahi karenge.
-    */
-
-    if (visibleCards.length === 0) {
-
-        return;
-
-    }
-
-
-    const randomIndex =
-        Math.floor(
-            Math.random() * visibleCards.length
-        );
-
-
-    const randomCard =
-        visibleCards[randomIndex];
-
-
-    openArtModal(randomCard);
-
-}
-
-
-/* =========================================================
-   RANDOM ART BUTTON
-========================================================= */
-
-randomArtBtn.addEventListener(
-    "click",
-    openRandomArt
-);
-
-
-/* =========================================================
-   HERO "SURPRISE ME"
-========================================================= */
-
-randomHeroBtn.addEventListener(
-    "click",
-    () => {
-
-        /*
-           Gallery tak smoothly le jao
-        */
-
-        document
-            .getElementById("gallery")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
-
-
-        /*
-           Thoda delay taaki scroll ke baad
-           random artwork open ho
-        */
-
-        setTimeout(() => {
-
-            openRandomArt();
-
-        }, 650);
-
-    }
-);
-
-
-/* =========================================================
-   INITIAL GALLERY
-========================================================= */
-
-filterGallery();
-
-
-/* =========================================================
-   CONSOLE MESSAGE
-========================================================= */
+// -------------------------------
+// CONSOLE MESSAGE
+// -------------------------------
 
 console.log(
-    "🌸 Anime Art Garden loaded successfully!"
+    "🌸 Anime Art Garden is ready!"
 );
