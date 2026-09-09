@@ -6,147 +6,1031 @@
 
     <title>Anime Art Garden 🌸</title>
 
+    <meta name="description" content="A dreamy little garden of anime-inspired art, characters and imagination.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Floating decorations -->
-    <div class="sparkle sparkle-one">✦</div>
-    <div class="sparkle sparkle-two">✧</div>
-    <div class="sparkle sparkle-three">✦</div>
+    <!-- ================= FLOATING DECORATIONS ================= -->
 
-    <!-- Navigation -->
+    <div class="floating-petal petal-1">✿</div>
+    <div class="floating-petal petal-2">✧</div>
+    <div class="floating-petal petal-3">♡</div>
+    <div class="floating-petal petal-4">✦</div>
+    <div class="floating-petal petal-5">❀</div>
+
+
+    <!-- ================= NAVBAR ================= -->
+
     <header class="navbar">
-        <div class="logo">🌸 Anime Art Garden</div>
 
-        <nav>
+        <a href="#home" class="logo">
+            <span>🌸</span>
+            Anime Art Garden
+        </a>
+
+        <nav class="nav-links">
             <a href="#home">Home</a>
             <a href="#gallery">Gallery</a>
             <a href="#about">About</a>
         </nav>
+
+        <a href="#gallery" class="nav-button">
+            Explore ✨
+        </a>
+
     </header>
 
 
-    <!-- Hero Section -->
+    <!-- ================= HERO ================= -->
+
     <main>
 
         <section class="hero" id="home">
 
             <div class="hero-content">
 
-                <p class="small-title">WELCOME TO MY LITTLE WORLD ♡</p>
+                <div class="eyebrow">
+                    ✦ WELCOME TO MY LITTLE WORLD ✦
+                </div>
 
                 <h1>
-                    Anime Art<br>
-                    <span>Garden</span>
+                    Where
+                    <span>imagination</span>
+                    blooms.
                 </h1>
 
-                <p class="hero-text">
-                    A little collection of characters,
-                    colors, sketches and imagination.
+                <p class="hero-description">
+                    A dreamy collection of anime-inspired characters,
+                    tiny stories, soft colors and creative little moments.
                 </p>
 
-                <a href="#gallery" class="explore-btn">
-                    Explore Art ✨
-                </a>
+                <div class="hero-buttons">
+
+                    <a href="#gallery" class="primary-button">
+                        Explore the garden
+                        <span>→</span>
+                    </a>
+
+                    <button class="secondary-button" id="randomHeroBtn">
+                        ✨ Surprise me
+                    </button>
+
+                </div>
+
+                <div class="hero-stats">
+
+                    <div>
+                        <strong>12</strong>
+                        <span>Artworks</span>
+                    </div>
+
+                    <div>
+                        <strong>08</strong>
+                        <span>Styles</span>
+                    </div>
+
+                    <div>
+                        <strong>∞</strong>
+                        <span>Imagination</span>
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="hero-art">
-                <div class="art-placeholder">
-                    🌸
+
+            <!-- HERO CODED ART -->
+
+            <div class="hero-visual">
+
+                <div class="glow-orb"></div>
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+                        <span>✦</span>
+                        <span>dreamy collection</span>
+                    </div>
+
+                    <div class="anime-character hero-girl">
+
+                        <div class="hair-back"></div>
+
+                        <div class="head">
+                            <div class="ear left-ear"></div>
+                            <div class="ear right-ear"></div>
+
+                            <div class="hair-front"></div>
+
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+
+                            <div class="blush left-blush"></div>
+                            <div class="blush right-blush"></div>
+                        </div>
+
+                        <div class="neck"></div>
+
+                        <div class="body">
+                            <div class="collar"></div>
+                            <div class="ribbon"></div>
+                        </div>
+
+                        <div class="flower flower-a">✿</div>
+                        <div class="flower flower-b">✿</div>
+
+                    </div>
+
+                    <div class="hero-card-bottom">
+                        <div>
+                            <small>FEATURED ART</small>
+                            <h3>Sakura Dream</h3>
+                        </div>
+
+                        <span class="heart-decoration">♡</span>
+                    </div>
+
                 </div>
+
+                <div class="floating-note note-one">
+                    🌸 soft & dreamy
+                </div>
+
+                <div class="floating-note note-two">
+                    ✨ made with imagination
+                </div>
+
             </div>
 
         </section>
 
 
-        <!-- Gallery Introduction -->
+        <!-- ================= GALLERY ================= -->
+
         <section class="gallery-section" id="gallery">
 
             <div class="section-heading">
-                <p>✿ DISCOVER ✿</p>
-                <h2>Little pieces of art</h2>
-                <span>Every picture has its own little story.</span>
+
+                <div class="section-label">
+                    ✿ DISCOVER THE COLLECTION ✿
+                </div>
+
+                <h2>
+                    Little pieces of
+                    <span>art.</span>
+                </h2>
+
+                <p>
+                    Choose a category, search for a character,
+                    or simply wander around.
+                </p>
+
             </div>
 
 
-            <!-- Category Buttons -->
-            <div class="categories">
+            <!-- SEARCH + RANDOM -->
 
-                <button class="category active">All</button>
-                <button class="category">Girls</button>
-                <button class="category">Boys</button>
-                <button class="category">Kids</button>
-                <button class="category">Animals</button>
-                <button class="category">Chibi</button>
-                <button class="category">Sketch</button>
-                <button class="category">Painting</button>
+            <div class="gallery-tools">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search artwork..."
+                        autocomplete="off"
+                    >
+
+                    <button id="clearSearch" aria-label="Clear search">
+                        ×
+                    </button>
+
+                </div>
+
+                <button class="random-button" id="randomArtBtn">
+                    <span>✦</span>
+                    Random Art
+                </button>
 
             </div>
 
 
-            <!-- Artwork Grid -->
-            <div class="art-grid">
+            <!-- FILTERS -->
 
-                <div class="art-card">
-                    <div class="art-image">🌸</div>
-                    <div class="art-info">
-                        <h3>Spring Dream</h3>
-                        <p>Anime Girl · Digital Art</p>
-                    </div>
-                </div>
+            <div class="categories" id="categoryButtons">
 
-                <div class="art-card">
-                    <div class="art-image">🌙</div>
-                    <div class="art-info">
-                        <h3>Moonlight</h3>
-                        <p>Anime Boy · Digital Art</p>
-                    </div>
-                </div>
+                <button class="category active" data-filter="All">
+                    All
+                </button>
 
-                <div class="art-card">
-                    <div class="art-image">🧸</div>
-                    <div class="art-info">
-                        <h3>Little Dreamer</h3>
-                        <p>Kid · Chibi Art</p>
-                    </div>
-                </div>
+                <button class="category" data-filter="Girls">
+                    ♡ Girls
+                </button>
 
-                <div class="art-card">
-                    <div class="art-image">🐱</div>
-                    <div class="art-info">
-                        <h3>Little Whiskers</h3>
-                        <p>Cat · Cute Art</p>
+                <button class="category" data-filter="Boys">
+                    Boys
+                </button>
+
+                <button class="category" data-filter="Kids">
+                    Kids
+                </button>
+
+                <button class="category" data-filter="Animals">
+                    Animals
+                </button>
+
+                <button class="category" data-filter="Chibi">
+                    Chibi
+                </button>
+
+                <button class="category" data-filter="Sketch">
+                    Sketch
+                </button>
+
+                <button class="category" data-filter="Painting">
+                    Painting
+                </button>
+
+            </div>
+
+
+            <!-- ARTWORK GRID -->
+
+            <div class="art-grid" id="artGrid">
+
+
+                <!-- 01 -->
+
+                <article
+                    class="art-card"
+                    data-category="Girls Painting"
+                    data-title="Sakura Dream"
+                    data-description="A soft spring afternoon surrounded by blooming sakura."
+                >
+
+                    <div class="art-number">01</div>
+
+                    <div class="art-scene scene-pink">
+
+                        <div class="moon"></div>
+                        <div class="cloud cloud-a"></div>
+                        <div class="cloud cloud-b"></div>
+
+                        <div class="mini-girl">
+                            <div class="mini-hair"></div>
+                            <div class="mini-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+                            <div class="mini-body"></div>
+                        </div>
+
+                        <div class="sakura-tree">
+                            <span>✿</span>
+                            <span>✿</span>
+                            <span>✿</span>
+                            <span>✿</span>
+                        </div>
+
+                        <div class="ground"></div>
+
                     </div>
-                </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">GIRL · PAINTING</span>
+                            <h3>Sakura Dream</h3>
+                            <p>A quiet spring moment.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Sakura Dream">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 02 -->
+
+                <article
+                    class="art-card"
+                    data-category="Boys"
+                    data-title="Moonlight Boy"
+                    data-description="A mysterious evening beneath a glowing lavender moon."
+                >
+
+                    <div class="art-number">02</div>
+
+                    <div class="art-scene scene-night">
+
+                        <div class="big-moon"></div>
+
+                        <div class="stars">
+                            ✦　·　✧　·　✦
+                        </div>
+
+                        <div class="mini-boy">
+
+                            <div class="boy-hair"></div>
+
+                            <div class="boy-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="boy-neck"></div>
+                            <div class="boy-body"></div>
+
+                        </div>
+
+                        <div class="night-ground"></div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">BOY · DIGITAL</span>
+                            <h3>Moonlight Boy</h3>
+                            <p>Lost in the quiet night.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Moonlight Boy">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 03 -->
+
+                <article
+                    class="art-card"
+                    data-category="Kids Chibi"
+                    data-title="Little Dreamer"
+                    data-description="A tiny chibi kid dreaming among clouds and stars."
+                >
+
+                    <div class="art-number">03</div>
+
+                    <div class="art-scene scene-blue">
+
+                        <div class="tiny-stars">✦ ✧ ✦</div>
+
+                        <div class="cloud cloud-big"></div>
+
+                        <div class="chibi-kid">
+
+                            <div class="kid-hair"></div>
+
+                            <div class="kid-face">
+                                <i></i>
+                                <i></i>
+                                <span>⌣</span>
+                            </div>
+
+                            <div class="kid-body"></div>
+
+                        </div>
+
+                        <div class="tiny-cloud"></div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">KID · CHIBI</span>
+                            <h3>Little Dreamer</h3>
+                            <p>Small dreams, big imagination.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Little Dreamer">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 04 -->
+
+                <article
+                    class="art-card"
+                    data-category="Animals Chibi"
+                    data-title="Mochi Cat"
+                    data-description="The cutest little cat taking a peaceful afternoon nap."
+                >
+
+                    <div class="art-number">04</div>
+
+                    <div class="art-scene scene-cream">
+
+                        <div class="cat-sparkles">✦ ✧</div>
+
+                        <div class="mochi-cat">
+
+                            <div class="cat-ear cat-ear-left"></div>
+                            <div class="cat-ear cat-ear-right"></div>
+
+                            <div class="cat-face">
+
+                                <div class="cat-eye"></div>
+                                <div class="cat-eye"></div>
+
+                                <span class="cat-nose">⌄</span>
+
+                                <div class="cat-mouth">⌣</div>
+
+                            </div>
+
+                            <div class="cat-body"></div>
+
+                            <div class="cat-tail"></div>
+
+                        </div>
+
+                        <div class="cat-shadow"></div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">ANIMAL · CHIBI</span>
+                            <h3>Mochi Cat</h3>
+                            <p>Too cute to disturb.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Mochi Cat">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 05 -->
+
+                <article
+                    class="art-card"
+                    data-category="Animals"
+                    data-title="Tiny Fox"
+                    data-description="A little fox wandering through a magical forest."
+                >
+
+                    <div class="art-number">05</div>
+
+                    <div class="art-scene scene-forest">
+
+                        <div class="forest-moon"></div>
+
+                        <div class="tree tree-one"></div>
+                        <div class="tree tree-two"></div>
+
+                        <div class="fox">
+
+                            <div class="fox-ear one"></div>
+                            <div class="fox-ear two"></div>
+
+                            <div class="fox-face">
+                                <i></i>
+                                <i></i>
+                                <span>♥</span>
+                            </div>
+
+                            <div class="fox-body"></div>
+                            <div class="fox-tail"></div>
+
+                        </div>
+
+                        <div class="grass"></div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">ANIMAL · DREAMY</span>
+                            <h3>Tiny Fox</h3>
+                            <p>A walk through the forest.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Tiny Fox">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 06 -->
+
+                <article
+                    class="art-card"
+                    data-category="Chibi Girls"
+                    data-title="Chibi Friends"
+                    data-description="Two tiny friends sharing a sweet little moment."
+                >
+
+                    <div class="art-number">06</div>
+
+                    <div class="art-scene scene-lavender">
+
+                        <div class="friend-stars">♡ ✦ ♡</div>
+
+                        <div class="chibi-friend friend-one">
+
+                            <div class="friend-hair"></div>
+
+                            <div class="friend-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="friend-body"></div>
+
+                        </div>
+
+                        <div class="chibi-friend friend-two">
+
+                            <div class="friend-hair"></div>
+
+                            <div class="friend-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="friend-body"></div>
+
+                        </div>
+
+                        <div class="heart-between">♡</div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">FRIENDS · CHIBI</span>
+                            <h3>Chibi Friends</h3>
+                            <p>Better together.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Chibi Friends">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 07 -->
+
+                <article
+                    class="art-card"
+                    data-category="Girls Sketch"
+                    data-title="Rainy Girl"
+                    data-description="A pencil-inspired scene of a girl watching the rain."
+                >
+
+                    <div class="art-number">07</div>
+
+                    <div class="art-scene scene-sketch">
+
+                        <div class="rain-lines">
+                            ╲ ╲ ╲ ╲ ╲
+                        </div>
+
+                        <div class="sketch-girl">
+
+                            <div class="sketch-hair"></div>
+
+                            <div class="sketch-face">
+                                <i></i>
+                                <i></i>
+                                <span>︵</span>
+                            </div>
+
+                            <div class="sketch-body"></div>
+
+                        </div>
+
+                        <div class="umbrella">☂</div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">GIRL · SKETCH</span>
+                            <h3>Rainy Girl</h3>
+                            <p>Listening to the rain.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Rainy Girl">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 08 -->
+
+                <article
+                    class="art-card"
+                    data-category="Boys Sketch"
+                    data-title="Coffee Boy"
+                    data-description="A calm sketch of an anime boy enjoying his coffee."
+                >
+
+                    <div class="art-number">08</div>
+
+                    <div class="art-scene scene-coffee">
+
+                        <div class="window"></div>
+
+                        <div class="coffee-boy">
+
+                            <div class="coffee-hair"></div>
+
+                            <div class="coffee-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="coffee-body"></div>
+
+                        </div>
+
+                        <div class="coffee-cup">
+                            ☕
+                        </div>
+
+                        <div class="steam">〰</div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">BOY · SKETCH</span>
+                            <h3>Coffee Boy</h3>
+                            <p>A slow morning.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Coffee Boy">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 09 -->
+
+                <article
+                    class="art-card"
+                    data-category="Girls Painting"
+                    data-title="Lavender Dream"
+                    data-description="A dreamy girl surrounded by soft lavender flowers."
+                >
+
+                    <div class="art-number">09</div>
+
+                    <div class="art-scene scene-lavender-paint">
+
+                        <div class="lavender-sun"></div>
+
+                        <div class="paint-girl">
+
+                            <div class="paint-hair"></div>
+
+                            <div class="paint-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="paint-dress"></div>
+
+                        </div>
+
+                        <div class="lavender-flowers">
+                            ❀ ❀ ❀ ❀
+                        </div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">GIRL · PAINTING</span>
+                            <h3>Lavender Dream</h3>
+                            <p>Lost among the flowers.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Lavender Dream">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 10 -->
+
+                <article
+                    class="art-card"
+                    data-category="Boys Painting"
+                    data-title="Starry Evening"
+                    data-description="A peaceful evening beneath a sky full of stars."
+                >
+
+                    <div class="art-number">10</div>
+
+                    <div class="art-scene scene-star">
+
+                        <div class="star-sky">
+                            ✦　✧　✦　·　✧
+                        </div>
+
+                        <div class="star-boy">
+
+                            <div class="star-hair"></div>
+
+                            <div class="star-face">
+                                <i></i>
+                                <i></i>
+                            </div>
+
+                            <div class="star-body"></div>
+
+                        </div>
+
+                        <div class="hill"></div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">BOY · PAINTING</span>
+                            <h3>Starry Evening</h3>
+                            <p>Under a thousand stars.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Starry Evening">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 11 -->
+
+                <article
+                    class="art-card"
+                    data-category="Chibi Kids"
+                    data-title="Tiny Adventures"
+                    data-description="Two tiny adventurers ready for their next journey."
+                >
+
+                    <div class="art-number">11</div>
+
+                    <div class="art-scene scene-adventure">
+
+                        <div class="mountain mountain-a"></div>
+                        <div class="mountain mountain-b"></div>
+
+                        <div class="adventure-kid kid-a">
+                            <div class="adventure-head"></div>
+                            <div class="adventure-body"></div>
+                        </div>
+
+                        <div class="adventure-kid kid-b">
+                            <div class="adventure-head"></div>
+                            <div class="adventure-body"></div>
+                        </div>
+
+                        <div class="flag">⚑</div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">KIDS · CHIBI</span>
+                            <h3>Tiny Adventures</h3>
+                            <p>Every day is a new story.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Tiny Adventures">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 12 -->
+
+                <article
+                    class="art-card"
+                    data-category="Animals Painting"
+                    data-title="Dreamy Bunny"
+                    data-description="A tiny bunny sitting peacefully in a magical flower garden."
+                >
+
+                    <div class="art-number">12</div>
+
+                    <div class="art-scene scene-bunny">
+
+                        <div class="bunny-moon"></div>
+
+                        <div class="dream-bunny">
+
+                            <div class="bunny-ear ear-a"></div>
+                            <div class="bunny-ear ear-b"></div>
+
+                            <div class="bunny-face">
+                                <i></i>
+                                <i></i>
+                                <span>•ᴗ•</span>
+                            </div>
+
+                            <div class="bunny-body"></div>
+
+                        </div>
+
+                        <div class="flower-field">
+                            ✿　❀　✿　❀
+                        </div>
+
+                    </div>
+
+                    <div class="art-info">
+
+                        <div>
+                            <span class="art-tag">ANIMAL · PAINTING</span>
+                            <h3>Dreamy Bunny</h3>
+                            <p>A little garden friend.</p>
+                        </div>
+
+                        <button class="like-button" aria-label="Like Dreamy Bunny">
+                            ♡
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- NO RESULTS -->
+
+            <div class="no-results" id="noResults">
+
+                <div>🌷</div>
+
+                <h3>Nothing bloomed here...</h3>
+
+                <p>
+                    Try another search or category.
+                </p>
+
+                <button id="resetGallery">
+                    Show all artwork
+                </button>
 
             </div>
 
         </section>
 
 
-        <!-- About -->
-        <section class="about" id="about">
+        <!-- ================= ABOUT ================= -->
 
-            <p>♡ ABOUT THIS GARDEN ♡</p>
+        <section class="about-section" id="about">
 
-            <h2>Art has no single style.</h2>
+            <div class="about-decoration">✦</div>
 
-            <span>
-                From soft anime illustrations to tiny sketches,
-                every style deserves a little space here.
-            </span>
+            <div class="about-content">
+
+                <div class="section-label">
+                    ♡ ABOUT THIS GARDEN ♡
+                </div>
+
+                <h2>
+                    Art doesn't have to be
+                    <span>perfect.</span>
+                </h2>
+
+                <p>
+                    Sometimes it just needs a little imagination.
+                    Anime Art Garden is a tiny digital space made
+                    for characters, colors, stories and all those
+                    ideas that live quietly inside our imagination.
+                </p>
+
+                <div class="about-line"></div>
+
+                <span class="about-signature">
+                    made with ♡ & imagination
+                </span>
+
+            </div>
 
         </section>
 
     </main>
 
 
-    <!-- Footer -->
+    <!-- ================= ART MODAL ================= -->
+
+    <div class="art-modal" id="artModal">
+
+        <div class="modal-overlay" id="modalOverlay"></div>
+
+        <div class="modal-box">
+
+            <button class="modal-close" id="modalClose">
+                ×
+            </button>
+
+            <div class="modal-art" id="modalArt">
+                <!-- selected artwork will be copied here -->
+            </div>
+
+            <div class="modal-content">
+
+                <span id="modalTag">
+                    ARTWORK
+                </span>
+
+                <h2 id="modalTitle">
+                    Artwork
+                </h2>
+
+                <p id="modalDescription">
+                    Artwork description.
+                </p>
+
+                <button class="modal-like" id="modalLike">
+                    ♡ Like this artwork
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
     <footer>
-        Made with ♡ & imagination
+
+        <div class="footer-logo">
+            🌸 Anime Art Garden
+        </div>
+
+        <p>
+            A little corner of imagination.
+        </p>
+
+        <div class="footer-bottom">
+            © 2026 · Made with ♡
+        </div>
+
     </footer>
 
 
